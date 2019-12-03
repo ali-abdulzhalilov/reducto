@@ -9,8 +9,11 @@ import stc21.project.reducto.service.UserService;
 @Controller
 public class HelloController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public HelloController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/")
     public String hello(Model model) {
