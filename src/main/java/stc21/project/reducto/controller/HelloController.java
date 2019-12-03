@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import stc21.project.reducto.service.UserService;
 
-import java.security.Principal;
-
 @Controller
 public class HelloController {
 

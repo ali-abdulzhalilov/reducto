@@ -6,4 +6,5 @@ import stc21.project.reducto.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
 }
