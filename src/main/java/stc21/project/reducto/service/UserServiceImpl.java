@@ -6,7 +6,6 @@ import stc21.project.reducto.dto.UserDTO;
 import stc21.project.reducto.entity.User;
 import stc21.project.reducto.repository.UserRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

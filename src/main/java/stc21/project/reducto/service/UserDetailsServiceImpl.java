@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import stc21.project.reducto.dto.UserPrincipal;
-import stc21.project.reducto.entity.User;
 import stc21.project.reducto.repository.UserRepository;
 
 @Service

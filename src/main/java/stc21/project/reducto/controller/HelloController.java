@@ -22,4 +22,19 @@ public class HelloController {
         
         return "hello";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+    @GetMapping("/list")
+    public String cards() {
+        return "list";
+    }
 }

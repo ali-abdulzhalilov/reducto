@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="base::head(title='Cards')"></head>
+    <body>
+        <th:block th:replace="base::navbar" />
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-sm-6 my-5">
+                    <h1>Hello, World!</h1>
+                    <p class="lead">
+                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+                    </p>
+                </div>
+                <div class="col"></div>
+            </div>
+
+
+            <div class="row">
+                <div class="col d-none d-lg-block">l</div>
+
+                <!---------------------------------->
+
+                <div class="col-12 col-md-3" id="filters">
+                    <div class="d-md-none">
+                        <hr>
+
+                        <button class="btn btn-primary btn-block d-md-none" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseExample">
+                            Filter lots
+                        </button>
+                    </div>
+
+                    <div class="collapse" id="collapseFilter">
+                        <form>
+                            <div class="form-group" id="formGroupRange">
+                                <label for="formGroupRange">Range</label>
+                                <div class="input-group mb-3">
+                                    <input type="range" class="custom-range w-100">
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="formGroupPrice">
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label for="formGroupPrice">Price label</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col">
+                                        <input type="text" class="form-control is-invalid" placeholder="min">
+                                        <div class="invalid-tooltip">
+                                            Min is less than 0
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control is-invalid" placeholder="max">
+                                        <div class="invalid-tooltip">
+                                            Max is less than min
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group" id="formGroupSelect">
+                                <label for="formGroupSelect">Select label</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="cityGroupSelect">City</label>
+                                    </div>
+                                    <select class="custom-select" id="cityGroupSelect">
+                                        <option value="1" selected>One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-group" id="formGroupCheckBox">
+                                <label for="formGroupCheckBox">Checkbox label</label>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Default checkbox
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                                    <label class="form-check-label" for="defaultCheck2">
+                                        Disabled checkbox
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                                    <label class="form-check-label" for="defaultCheck3">
+                                        Default checkbox
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                                    <label class="form-check-label" for="defaultCheck4">
+                                        Default checkbox
+                                    </label>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-group" id="formGroupRadioBox">
+                                <label for="formGroupRadioBox">Radio label</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Default radio
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Second default radio
+                                    </label>
+                                </div>
+                                <div class="form-check disabled">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        Disabled radio
+                                    </label>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <button type="submit" class="btn btn-primary btn-block">Filter</button>
+                        </form>
+                    </div>
+
+                    <hr>
+                </div>
+
+                <!---------------------------------->
+
+                <div class="col-12 col-md-9 col-lg-7" id="cards">
+                    <th:block th:replace="base::card" />
+                    <th:block th:replace="base::card" />
+                    <th:block th:replace="base::card" />
+                    <th:block th:replace="base::card" />
+                    <th:block th:replace="base::card" />
+                </div>
+
+                <!---------------------------------->
+
+                <div class="col d-none d-lg-block">r</div>
+            </div>
+
+        </div>
+
+        <th:block th:insert="base::scripts" />
+    </body>
+</html>
