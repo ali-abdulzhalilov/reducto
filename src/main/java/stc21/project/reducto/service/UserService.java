@@ -1,10 +1,10 @@
 package stc21.project.reducto.service;
 
-import stc21.project.reducto.entity.User;
+import stc21.project.reducto.dto.UserDTO;
 
 import java.util.List;
 
 public interface UserService {
-    List<User> getAllUsers();
-    User findByUsername(String username);
+    List<UserDTO> getAllUsers();
+    UserDTO findByUsername(String username);
 }
