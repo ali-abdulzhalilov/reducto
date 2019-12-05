@@ -2,17 +2,14 @@ package stc21.project.reducto.entity;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Data
 @Entity
 @Table(name = "users")
 @RequiredArgsConstructor
-public class User implements UserDetails{
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_users_sequence")
@@ -23,7 +20,7 @@ public class User implements UserDetails{
             allocationSize = 1)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(name = "first_name", nullable = true)
@@ -35,34 +32,9 @@ public class User implements UserDetails{
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = true)
+    @Column(nullable = true, unique = true)
     private String email;
 
-    @Column(nullable = true)
+    @Column(nullable = true, unique = true)
     private String phoneNumber;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

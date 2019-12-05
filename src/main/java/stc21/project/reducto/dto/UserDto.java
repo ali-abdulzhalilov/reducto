@@ -6,7 +6,7 @@ import lombok.NonNull;
 
 @Data
 @NoArgsConstructor
-public class UserDTO {
+public class UserDto {
     private Long id;
     @NonNull private String username;
     private String firstName;

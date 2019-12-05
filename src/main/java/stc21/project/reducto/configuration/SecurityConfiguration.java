@@ -28,7 +28,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                //.csrf().disable()
                 .authorizeRequests()
                     .antMatchers("/**").permitAll()
                     .anyRequest().authenticated()
@@ -39,8 +38,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .defaultSuccessUrl("/", true)
                     .failureForwardUrl("/register")
                     .and()
-                .logout()
-                    .permitAll();
+                .logout().deleteCookies("JSESSIONID")
+                    .permitAll()
+                    .and()
+                .rememberMe()
+                    .key("SUPER_SECRET_KEY");
     }
 
     @Bean
