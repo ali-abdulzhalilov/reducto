@@ -2,11 +2,13 @@ package stc21.project.reducto.service;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 import stc21.project.reducto.dto.UserDto;
 import stc21.project.reducto.dto.UserRegistrationDto;
 import stc21.project.reducto.entity.User;
 import stc21.project.reducto.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,7 +58,27 @@ public class UserServiceImpl implements UserService {
         return modelMapper.map(user, UserDto.class);
     }
 
-     @Override
+    @Override
+    public List<String> fieldsWithErrors(UserRegistrationDto userRegistrationDto) {
+        List<String> result = new ArrayList<>();
+
+        UserDto existingUser = findByUsername(userRegistrationDto.getUsername());
+        if (existingUser != null)
+            result.add("username");
+
+        existingUser = findByEmail(userRegistrationDto.getEmail());
+        if (existingUser != null)
+            result.add("email");
+
+        existingUser = findByPhoneNumber(userRegistrationDto.getPhoneNumber());
+        if (existingUser != null) {
+            result.add("phoneNumber");
+        }
+
+        return result;
+    }
+
+    @Override
      public User save(UserRegistrationDto userRegistrationDto) {
         if (userRegistrationDto == null)
             throw new NullPointerException("No userRegistrationDto to save");

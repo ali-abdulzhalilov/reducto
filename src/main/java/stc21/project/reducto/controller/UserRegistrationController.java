@@ -13,6 +13,7 @@ import stc21.project.reducto.dto.UserRegistrationDto;
 import stc21.project.reducto.service.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/register")
@@ -39,32 +40,13 @@ public class UserRegistrationController {
             @ModelAttribute("user") @Valid UserRegistrationDto userRegistrationDto,
             BindingResult result) {
 
-        // validation
-        // TODO: move validation checks to custom validation annotations
-
-        // checks for validity
-
-
-        // checks for existence
-        UserDto existingUserDto = userService.findByUsername(userRegistrationDto.getUsername());
-        if (existingUserDto != null) {
-            result.rejectValue("username", null, "User with this username already exist");
-        }
-
-        existingUserDto = userService.findByEmail(userRegistrationDto.getEmail());
-        if (existingUserDto != null) {
-            result.rejectValue("email", null, "User with this email already exist");
-        }
-
-        existingUserDto = userService.findByPhoneNumber(userRegistrationDto.getPhoneNumber());
-        if (existingUserDto != null) {
-            result.rejectValue("phoneNumber", null, "User with this phoneNumber already exist");
-        }
-
-        if (!userRegistrationDto.getPassword().equals(
-                userRegistrationDto.getRepeatPassword())){
-            result.rejectValue("repeatPassword", null, "Password doesn't match");
-        }
+        userService
+                .fieldsWithErrors(userRegistrationDto)
+                .forEach(
+                        fieldName->result.rejectValue(
+                                fieldName,
+                                null,
+                                "Username with this "+fieldName+" already exist. Pick another one."));
 
         if (result.hasErrors()) {
             return "register";

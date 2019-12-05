@@ -2,12 +2,15 @@ package stc21.project.reducto.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
+import stc21.project.reducto.dto.validators.annotations.EqualPasswords;
+import stc21.project.reducto.dto.validators.annotations.ValidEmail;
+import stc21.project.reducto.dto.validators.annotations.ValidPhoneNumber;
 
 import javax.validation.constraints.*;
 
 @Data
 @NoArgsConstructor
+@EqualPasswords
 public class UserRegistrationDto {
     @NotNull
     @Size(min=3, max=20)
@@ -18,8 +21,8 @@ public class UserRegistrationDto {
     private String password;
     private String repeatPassword;
 
-    //@Email()
+    @ValidEmail
     private String email;
-    //@Pattern()
+    @ValidPhoneNumber
     private String phoneNumber;
 }
